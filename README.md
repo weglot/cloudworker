@@ -1,30 +1,34 @@
 <img src="https://i.imgur.com/e0Asgu3.jpg">
 
-***
+---
+
+This package is a fork from [dollarshaveclub/cloudworker](https://github.com/dollarshaveclub/cloudworker)
 
 ## Installing
 
 Install via NPM:
+
 ```sh
-npm install -g @dollarshaveclub/cloudworker
+npm install -g @weglot/cloudworker
 ```
+
 ## Package Usage
 
 ```
-const Cloudworker = require('@dollarshaveclub/cloudworker')
+const Cloudworker = require("@weglot/cloudworker");
 
 const simpleScript = `addEventListener('fetch', event => {
   event.respondWith(new Response('hello', {status: 200}))
-})`
+})`;
 
-const req = new Cloudworker.Request('https://myfancywebsite.com/someurl')
-const cw = new Cloudworker(simpleScript)
+const req = new Cloudworker.Request("https://myfancywebsite.com/someurl");
+const cw = new Cloudworker(simpleScript);
 cw.dispatch(req).then((res) => {
-  console.log("Response Status: ", res.status)
-  res.text().then((body) =>{
-    console.log("Response Body: ", body)
-  })
-})
+  console.log("Response Status: ", res.status);
+  res.text().then((body) => {
+    console.log("Response Body: ", body);
+  });
+});
 ```
 
 ## CLI Usage
@@ -47,6 +51,7 @@ Options:
 ```
 
 ### Simple
+
 ```sh
 cloudworker example/example.js
 curl localhost:3000/
@@ -58,50 +63,56 @@ curl localhost:3000/
 ```
 
 ### Workers KV
+
 ```sh
 cloudworker --debug --kv-set KeyValueStore.key=value --kv-set KeyValueStore.hello=world example/example-kv.js
 curl localhost:3000/
 ```
 
 ### Workers KV with Persistence
+
 ```sh
 cloudworker --debug --kv-file KeyValueStore=kv.json --kv-set KeyValueStore.key=value --kv-set KeyValueStore.hello=world example/example-kv.js
 curl localhost:3000/
 ```
 
 ### WebAssembly
-#### Simple 
+
+#### Simple
 
 ```sh
 cloudworker --debug --wasm Wasm=example/simple.wasm example/example-wasm-simple.js
 curl localhost:3000/
 ```
+
 [WebAssembly Source](https://github.com/mdn/webassembly-examples/blob/master/js-api-examples/simple.wat)
 
-
 #### Inverse Square Root
+
 ```sh
 cloudworker --debug --wasm isqrt=example/isqrt.wasm example/example-wasm-isqrt.js
 curl localhost:3000/?num=9
 ```
+
 [WebAssembly Source](https://developers.cloudflare.com/workers/api/resource-bindings/webassembly-modules/)
 
-
-#### Resizer 
+#### Resizer
 
 ```sh
 cloudworker --debug --wasm RESIZER_WASM=example/resizer.wasm example/example-wasm-resizer.js
 curl localhost:3000/wasm-demo/dogdrone.png?width=210 # or open in browser
 ```
+
 [WebAssembly Source](https://github.com/cloudflare/cloudflare-workers-wasm-demo)
 
-## Cloudflare Worker Compatibility 
+## Cloudflare Worker Compatibility
 
-Cloudworker strives to be as similar to the Cloudflare Worker runtime as possible. A script should behave the same when executed by Cloudworker and when run within Cloudflare Workers. Please file an issue for scenarios in which Cloudworker behaves differently. As behavior differences are found, this package will be updated to match the Cloudflare Worker runtime. This may result in breakage if scripts depended on those behavior differences. 
+Cloudworker strives to be as similar to the Cloudflare Worker runtime as possible. A script should behave the same when executed by Cloudworker and when run within Cloudflare Workers. Please file an issue for scenarios in which Cloudworker behaves differently. As behavior differences are found, this package will be updated to match the Cloudflare Worker runtime. This may result in breakage if scripts depended on those behavior differences.
 
 ## Release Process
 
 For beta releases:
+
 - Create a new release branch named `v[version]-beta`. e.g. `v0.0.10-beta`
 - Run `npm version [version]-beta.[beta number]`. e.g `npm version 0.0.10-beta.1`
 - Push branch to origin.
@@ -111,6 +122,7 @@ For beta releases:
 - Subsequent beta releases of the same beta version should be made off of the same release branch.
 
 For production releases:
+
 - Merge release branch (if one exists) into master.
 - Run `npm version [version]`. e.g. `npm version 0.0.10`
 - Push master to origin.
@@ -118,4 +130,5 @@ For production releases:
 - Create a new release in Github using tag created by `npm version` and copy release notes from beta.
 
 ## License
+
 MIT
