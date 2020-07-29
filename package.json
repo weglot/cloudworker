@@ -1,6 +1,6 @@
 {
   "name": "@weglot/cloudworker",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "node.js runner for Cloudflare Workers",
   "main": "index.js",
   "types": "index.d.ts",
