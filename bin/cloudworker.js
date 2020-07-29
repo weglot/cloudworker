@@ -62,7 +62,7 @@ program
     3001
   )
   .action((f) => {
-    file = f;
+    file = f.args[0];
   })
   .parse(process.argv);
 
