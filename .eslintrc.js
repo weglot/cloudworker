@@ -1,13 +1,22 @@
 module.exports = {
-  extends: [
-    'dollarshaveclub',
-  ],
+  extends: ["eslint:recommended"],
   rules: {
-    'no-console': 0,
+    "prettier/prettier": "error",
+    "no-console": 0,
   },
-  plugins: ['jest'],
+  parserOptions: {
+    ecmaVersion: 11,
+    ecmaFeatures: {
+      experimentalObjectRestSpread: true,
+    },
+  },
+  plugins: ["jest", "prettier"],
   env: {
-    'jest/globals': true,
+    node: true,
+    browser: true,
+    commonjs: true,
+    jest: true,
+    es6: true,
   },
   globals: {
     WebAssembly: true,
@@ -15,6 +24,6 @@ module.exports = {
     BigInt: true,
     BigInt64Array: true,
     BigUint64Array: true,
-    SharedArrayBuffer: true
-  }
-}
+    SharedArrayBuffer: true,
+  },
+};

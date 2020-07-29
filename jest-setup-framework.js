@@ -1,7 +1,7 @@
-const arrayBufferIsEqual = require('arraybuffer-equal')
+const arrayBufferIsEqual = require("arraybuffer-equal");
 
 expect.extend({
-  arrayBufferIsEqual (left, right) {
-    return {pass: arrayBufferIsEqual(left, right)}
+  arrayBufferIsEqual(left, right) {
+    return { pass: arrayBufferIsEqual(left, right) };
   },
-})
+});
