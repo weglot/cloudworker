@@ -6,10 +6,10 @@ This package is a fork from [dollarshaveclub/cloudworker](https://github.com/dol
 
 ## Installing
 
-Install via NPM:
+Install via YARN:
 
 ```sh
-npm install -g @weglot/cloudworker
+yarn add --dev @weglot/cloudworker
 ```
 
 ## Package Usage
